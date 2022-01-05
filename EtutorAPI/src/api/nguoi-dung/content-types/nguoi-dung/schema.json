@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "nguoi_dungs",
+  "info": {
+    "singularName": "nguoi-dung",
+    "pluralName": "nguoi-dungs",
+    "displayName": "NguoiDung"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Fullname": {
+      "type": "string"
+    }
+  }
+}
