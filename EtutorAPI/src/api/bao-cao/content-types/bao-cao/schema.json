@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bao_caos",
+  "info": {
+    "singularName": "bao-cao",
+    "pluralName": "bao-caos",
+    "displayName": "BaoCao"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "IDStudent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::nguoi-dung.nguoi-dung"
+    },
+    "IDTeacher": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::nguoi-dung.nguoi-dung"
+    },
+    "Reason": {
+      "type": "text"
+    }
+  }
+}

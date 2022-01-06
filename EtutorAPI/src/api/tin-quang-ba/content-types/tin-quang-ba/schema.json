@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tin_quang_bas",
+  "info": {
+    "singularName": "tin-quang-ba",
+    "pluralName": "tin-quang-bas",
+    "displayName": "TinQuangBa",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "IDTeacher": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::nguoi-dung.nguoi-dung"
+    },
+    "subjects": {
+      "type": "string"
+    },
+    "Time": {
+      "type": "string"
+    },
+    "Cost": {
+      "type": "biginteger"
+    },
+    "Profile": {
+      "type": "richtext"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chats",
+  "info": {
+    "singularName": "chat",
+    "pluralName": "chats",
+    "displayName": "Chat"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "IDStudent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::nguoi-dung.nguoi-dung"
+    },
+    "IDTeacher": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::nguoi-dung.nguoi-dung"
+    }
+  }
+}
