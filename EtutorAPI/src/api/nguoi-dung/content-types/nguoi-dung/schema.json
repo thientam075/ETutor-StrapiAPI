@@ -25,14 +25,18 @@
       "type": "integer"
     },
     "Avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "IsBan": {
       "type": "boolean"
+    },
+    "PhoneNumber": {
+      "type": "string"
     }
   }
 }
