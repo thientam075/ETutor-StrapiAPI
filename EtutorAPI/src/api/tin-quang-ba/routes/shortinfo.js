@@ -14,7 +14,12 @@ module.exports = {
         method: 'GET',
         path: '/tin-quang-bas/fullInfo/:id', // Only match when the first parameter contains 2 or 3 digits.
         handler: 'shortinfo.fullInfoTeacher',
-      }
+      },
+      {
+        method: 'GET',
+        path: '/tin-quang-bas/findAllInfo', // Only match when the first parameter contains 2 or 3 digits.
+        handler: 'shortinfo.findAllTutor',
+      },
     ]
   }
    

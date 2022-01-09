@@ -42,14 +42,27 @@ module.exports = {
     return res;
   },
   async fullInfoTeacher(ctx) {
-    const queryObj = ctx.request.params;
+    const queryObj = ctx.request.params.id;
+    if (queryObj === null || queryObj === undefined) {
+      return ctx.badRequest("id is not exist");
+    }
     let query = `SELECT
-            *
+            U.id, U.fullname, U.email, T.profile, T.subjects, T.time, T.cost, T.star, T.total_rating
         FROM
             "tin_quang_bas" as T, "nguoi_dungs" as U, "tin_quang_bas_id_teacher_links" as UT
         WHERE
             T.id = UT."tin_quang_ba_id" AND UT."nguoi_dung_id" = U.id AND U.id = ${queryObj}
         ORDER BY U.fullname ASC`;
+    var res = await strapi.db.connection.raw(query);
+    return res;
+  },
+  async findAllTutor(ctx) {
+    let query = `SELECT
+    U.id, U.fullname, U.email, T.profile, T.subjects, T.time, T.cost, T.star, T.total_rating
+FROM
+    "tin_quang_bas" as T, "nguoi_dungs" as U, "tin_quang_bas_id_teacher_links" as UT
+WHERE
+    T.id = UT."tin_quang_ba_id" AND UT."nguoi_dung_id" = U.id `;
     var res = await strapi.db.connection.raw(query);
     return res;
   },
