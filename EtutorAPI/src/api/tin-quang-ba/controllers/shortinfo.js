@@ -8,7 +8,7 @@ module.exports = {
   async rankTutor(ctx) {
     var res = await strapi.db.connection.raw(
       `SELECT
-        U.fullname, T.star, T.total_rating
+        U.id,U.fullname, T.star, T.total_rating
     FROM
         "tin_quang_bas" as T, "nguoi_dungs" as U, "tin_quang_bas_id_teacher_links" as UT
     WHERE
@@ -35,7 +35,7 @@ module.exports = {
   FROM
       "tin_quang_bas" as T, "nguoi_dungs" as U, "tin_quang_bas_id_teacher_links" as UT
   WHERE
-      T.id = UT."tin_quang_ba_id" AND UT."nguoi_dung_id" = U.id AND U.document_vectors @@ to_tsquery(${queryObj})
+      T.id = UT."tin_quang_ba_id" AND UT."nguoi_dung_id" = U.id AND U.document_vectors @@ to_tsquery('${queryObj}')
   ORDER BY T.star DESC`;
     }
     var res = await strapi.db.connection.raw(query);
