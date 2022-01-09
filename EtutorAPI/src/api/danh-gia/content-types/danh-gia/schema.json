@@ -4,28 +4,29 @@
   "info": {
     "singularName": "danh-gia",
     "pluralName": "danh-gias",
-    "displayName": "DanhGia"
+    "displayName": "DanhGia",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "IDStudent": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::nguoi-dung.nguoi-dung"
-    },
-    "IDTeacher": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::nguoi-dung.nguoi-dung"
-    },
     "Star": {
       "type": "integer"
     },
     "Comment": {
       "type": "text"
+    },
+    "IDStudent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "IDTeacher": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "bao-cao",
     "pluralName": "bao-caos",
-    "displayName": "BaoCao"
+    "displayName": "BaoCao",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,12 +15,12 @@
     "IDStudent": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::nguoi-dung.nguoi-dung"
+      "target": "plugin::users-permissions.user"
     },
     "IDTeacher": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::nguoi-dung.nguoi-dung"
+      "target": "plugin::users-permissions.user"
     },
     "Reason": {
       "type": "text"

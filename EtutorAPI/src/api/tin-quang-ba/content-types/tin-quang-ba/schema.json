@@ -12,11 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "IDTeacher": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::nguoi-dung.nguoi-dung"
-    },
     "subjects": {
       "type": "string"
     },
@@ -39,6 +34,11 @@
       "type": "integer",
       "min": 0,
       "default": 0
+    },
+    "IDTeacher": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }
