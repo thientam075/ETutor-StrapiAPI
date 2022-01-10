@@ -20,6 +20,11 @@ module.exports = {
         path: '/tin-quang-bas/findAllInfo', // Only match when the first parameter contains 2 or 3 digits.
         handler: 'shortinfo.findAllTutor',
       },
+      {
+        method: 'GET',
+        path: '/tin-quang-bas/updateIndex', // Only match when the first parameter contains 2 or 3 digits.
+        handler: 'shortinfo.updateIndex',
+      },
     ]
   }
    
