@@ -10,9 +10,9 @@ module.exports = {
       `SELECT
         U.id,U.fullname, T.star, T.total_rating
     FROM
-        "tin_quang_bas" as T, "nguoi_dungs" as U, "tin_quang_bas_id_teacher_links" as UT
+        "tin_quang_bas" as T, "up_users" as U, "tin_quang_bas_id_teacher_links" as UT
     WHERE
-        T.id = UT."tin_quang_ba_id" AND UT."nguoi_dung_id" = U.id AND T.star >= 4
+        T.id = UT."tin_quang_ba_id" AND UT."user_id" = U.id AND T.star >= 4
     ORDER BY T.star DESC
     LIMIT 10`
     );
@@ -25,17 +25,17 @@ module.exports = {
       query = `SELECT
             U.fullname, T.star, T.total_rating
         FROM
-            "tin_quang_bas" as T, "nguoi_dungs" as U, "tin_quang_bas_id_teacher_links" as UT
+            "tin_quang_bas" as T, "up_users" as U, "tin_quang_bas_id_teacher_links" as UT
         WHERE
-            T.id = UT."tin_quang_ba_id" AND UT."nguoi_dung_id" = U.id
+            T.id = UT."tin_quang_ba_id" AND UT."user_id" = U.id
         ORDER BY U.fullname ASC`;
     } else {
       query = `SELECT
       U.fullname, T.star, T.total_rating
   FROM
-      "tin_quang_bas" as T, "nguoi_dungs" as U, "tin_quang_bas_id_teacher_links" as UT
+      "tin_quang_bas" as T, "up_users" as U, "tin_quang_bas_id_teacher_links" as UT
   WHERE
-      T.id = UT."tin_quang_ba_id" AND UT."nguoi_dung_id" = U.id AND U.document_vectors @@ to_tsquery('${queryObj}')
+      T.id = UT."tin_quang_ba_id" AND UT."user_id" = U.id AND U.document_vectors @@ to_tsquery('${queryObj}')
   ORDER BY T.star DESC`;
     }
     var res = await strapi.db.connection.raw(query);
@@ -49,9 +49,9 @@ module.exports = {
     let query = `SELECT
             U.id, U.fullname, U.email, T.profile, T.subjects, T.time, T.cost, T.star, T.total_rating
         FROM
-            "tin_quang_bas" as T, "nguoi_dungs" as U, "tin_quang_bas_id_teacher_links" as UT
+            "tin_quang_bas" as T, "up_users" as U, "tin_quang_bas_id_teacher_links" as UT
         WHERE
-            T.id = UT."tin_quang_ba_id" AND UT."nguoi_dung_id" = U.id AND U.id = ${queryObj}
+            T.id = UT."tin_quang_ba_id" AND UT."user_id" = U.id AND U.id = ${queryObj}
         ORDER BY U.fullname ASC`;
     var res = await strapi.db.connection.raw(query);
     return res;
@@ -60,9 +60,9 @@ module.exports = {
     let query = `SELECT
     U.id, U.fullname, U.email, T.profile, T.subjects, T.time, T.cost, T.star, T.total_rating
 FROM
-    "tin_quang_bas" as T, "nguoi_dungs" as U, "tin_quang_bas_id_teacher_links" as UT
+    "tin_quang_bas" as T, "up_users" as U, "tin_quang_bas_id_teacher_links" as UT
 WHERE
-    T.id = UT."tin_quang_ba_id" AND UT."nguoi_dung_id" = U.id `;
+    T.id = UT."tin_quang_ba_id" AND UT."user_id" = U.id `;
     var res = await strapi.db.connection.raw(query);
     return res;
   },
