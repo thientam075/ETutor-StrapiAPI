@@ -23,7 +23,7 @@ module.exports = {
     let query = "";
     if (!queryObj || queryObj === "") {
       query = `SELECT
-            U.fullname, T.star, T.total_rating
+            U.id,U.fullname, T.star, T.total_rating
         FROM
             "tin_quang_bas" as T, "up_users" as U, "tin_quang_bas_id_teacher_links" as UT
         WHERE
@@ -31,7 +31,7 @@ module.exports = {
         ORDER BY U.fullname ASC`;
     } else {
       query = `SELECT
-      U.fullname, T.star, T.total_rating
+      U.id,U.fullname, T.star, T.total_rating
   FROM
       "tin_quang_bas" as T, "up_users" as U, "tin_quang_bas_id_teacher_links" as UT
   WHERE
@@ -67,11 +67,11 @@ WHERE
     return res;
   },
   async updateIndex(ctx) {
-    let query = `CREATE INDEX idx_name_doc_vec ON up_users USING gin(document_vectors);
+    let query = `
     UPDATE 
     up_users 
 SET 
-    document_vectors = (to_tsvector(fullname); `;
+    document_vectors = (to_tsvector(fullname)) `;
     var res = await strapi.db.connection.raw(query);
     return res;
   },

@@ -73,9 +73,6 @@
       "type": "boolean",
       "default": false
     },
-    "document_vectors": {
-      "type": "string"
-    },
     "Avatar": {
       "type": "text"
     }
