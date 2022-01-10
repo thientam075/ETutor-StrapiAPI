@@ -8,7 +8,7 @@ module.exports = {
   async rankTutor(ctx) {
     var res = await strapi.db.connection.raw(
       `SELECT
-        U.id,U.fullname, T.star, T.total_rating
+        U.id,U.fullname,U.avatar, T.star, T.total_rating
     FROM
         "tin_quang_bas" as T, "up_users" as U, "tin_quang_bas_id_teacher_links" as UT
     WHERE
@@ -23,7 +23,7 @@ module.exports = {
     let query = "";
     if (!queryObj || queryObj === "") {
       query = `SELECT
-            U.id,U.fullname, T.star, T.total_rating
+            U.id,U.fullname, U.avatar, T.star, T.total_rating
         FROM
             "tin_quang_bas" as T, "up_users" as U, "tin_quang_bas_id_teacher_links" as UT
         WHERE
@@ -31,7 +31,7 @@ module.exports = {
         ORDER BY U.fullname ASC`;
     } else {
       query = `SELECT
-      U.id,U.fullname, T.star, T.total_rating
+      U.id,U.fullname,U.avatar, T.star, T.total_rating
   FROM
       "tin_quang_bas" as T, "up_users" as U, "tin_quang_bas_id_teacher_links" as UT
   WHERE
@@ -47,7 +47,7 @@ module.exports = {
       return ctx.badRequest("id is not exist");
     }
     let query = `SELECT
-            U.id, U.fullname, U.email, T.profile, T.subjects, T.time, T.cost, T.star, T.total_rating
+            U.id, U.fullname, U.email,U.avatar, T.profile, T.subjects, T.time, T.cost, T.star, T.total_rating
         FROM
             "tin_quang_bas" as T, "up_users" as U, "tin_quang_bas_id_teacher_links" as UT
         WHERE
