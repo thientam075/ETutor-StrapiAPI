@@ -66,4 +66,13 @@ WHERE
     var res = await strapi.db.connection.raw(query);
     return res;
   },
+  async updateIndex(ctx) {
+    let query = `CREATE INDEX idx_name_doc_vec ON up_users USING gin(document_vectors);
+    UPDATE 
+    up_users 
+SET 
+    document_vectors = (to_tsvector(fullname); `;
+    var res = await strapi.db.connection.raw(query);
+    return res;
+  },
 };
