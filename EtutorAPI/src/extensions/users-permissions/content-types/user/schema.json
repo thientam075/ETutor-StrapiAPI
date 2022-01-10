@@ -72,6 +72,9 @@
     "IsBan": {
       "type": "boolean",
       "default": false
+    },
+    "document_vectors": {
+      "type": "string"
     }
   }
 }
