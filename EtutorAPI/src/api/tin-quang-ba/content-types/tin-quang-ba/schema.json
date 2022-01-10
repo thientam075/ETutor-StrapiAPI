@@ -21,9 +21,6 @@
     "Cost": {
       "type": "biginteger"
     },
-    "Profile": {
-      "type": "richtext"
-    },
     "Star": {
       "type": "float",
       "default": 0,
@@ -39,6 +36,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "Profile": {
+      "type": "text"
     }
   }
 }
