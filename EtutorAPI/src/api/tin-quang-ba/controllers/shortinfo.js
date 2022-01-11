@@ -35,7 +35,7 @@ module.exports = {
                                                 FROM danh_gias as DG, danh_gias_id_teacher_links as DGTeacher
                                                 WHERE DG.id = DGTeacher.danh_gia_id
                                                 GROUP BY DGTeacher.user_id) as temp
-      WHERE temp.id = U.id AND T.id = UT."tin_quang_ba_id" AND UT."user_id" = U.id AND U.document_vectors @@ to_tsquery('${queryObj}')
+      WHERE temp.id = U.id AND T.id = UT."tin_quang_ba_id" AND UT."user_id" = U.id AND U.fullname LIKE \'%${queryObj}%\'
        
   ORDER BY temp.star DESC`;
     }
