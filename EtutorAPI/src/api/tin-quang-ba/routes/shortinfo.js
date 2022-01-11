@@ -7,6 +7,11 @@ module.exports = {
       },
       { // Path defined with a URL parameter
         method: 'GET',
+        path: '/tin-quang-bas/getDataAdByTeacherId/:id',
+        handler: 'shortinfo.getDataAdByTeacherId',
+      },
+      { // Path defined with a URL parameter
+        method: 'GET',
         path: '/tin-quang-bas/searchTutor',
         handler: 'shortinfo.searchTeacher',
       },

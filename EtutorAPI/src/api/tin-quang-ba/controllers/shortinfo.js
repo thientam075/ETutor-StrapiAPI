@@ -57,7 +57,6 @@ module.exports = {
     WHERE temp.id = U.id AND T.id = UT."tin_quang_ba_id" AND UT."user_id" = U.id AND U.id = ${queryObj}
     ORDER BY U.fullname ASC`;
     var res = await strapi.db.connection.raw(query);
-    
     return res;
   },
   async findAllTutor(ctx) {
@@ -98,5 +97,16 @@ SET
     console.log('res', res)
     return res;
   },
-
+  async getDataAdByTeacherId(ctx) {
+    const queryObj = ctx.request.params.id;
+    if (queryObj === null || queryObj === undefined) {   
+      return ctx.badRequest("id is not exist");
+    }
+    let query = `SELECT U.id, U.fullname, U.email,U.avatar, T.profile, T.subjects, T.time, T.cost
+    FROM "tin_quang_bas" as T, "up_users" as U, "tin_quang_bas_id_teacher_links" as UT
+    WHERE  T.id = UT."tin_quang_ba_id" AND UT."user_id" = U.id AND U.id = ${queryObj}
+    `;
+    var res = await strapi.db.connection.raw(query);
+    return res;
+  },
 };
