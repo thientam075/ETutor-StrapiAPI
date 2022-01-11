@@ -102,7 +102,7 @@ SET
     if (queryObj === null || queryObj === undefined) {   
       return ctx.badRequest("id is not exist");
     }
-    let query = `SELECT U.id, U.fullname, U.email,U.avatar, T.profile, T.subjects, T.time, T.cost
+    let query = `SELECT U.fullname, U.email,U.avatar,T.id, T.profile, T.subjects, T.time, T.cost
     FROM "tin_quang_bas" as T, "up_users" as U, "tin_quang_bas_id_teacher_links" as UT
     WHERE  T.id = UT."tin_quang_ba_id" AND UT."user_id" = U.id AND U.id = ${queryObj}
     `;
