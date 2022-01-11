@@ -50,11 +50,32 @@ module.exports = {
       return ctx.badRequest("id is not exist");
     }
     let query = `SELECT U.id, U.fullname, U.email,U.avatar, T.profile, T.subjects, T.time, T.cost
-    FROM "tin_quang_bas" as T, "up_users" as U, "tin_quang_bas_id_teacher_links" as UT, 
-    WHERE AND T.id = UT."tin_quang_ba_id" AND UT."user_id" = U.id AND U.id = ${queryObj}
+    FROM "tin_quang_bas" as T, "up_users" as U, "tin_quang_bas_id_teacher_links" as UT
+    WHERE T.id = UT."tin_quang_ba_id" AND UT."user_id" = U.id AND U.id = ${queryObj}
     ORDER BY U.fullname ASC`;
+
     var res = await strapi.db.connection.raw(query);
-    return res;
+
+    let query2 = `SELECT DGTeacher.user_id as id, COUNT(DG) as total_rating, AVG(DG.star) as star
+                  FROM danh_gias as DG, danh_gias_id_teacher_links as DGTeacher
+                  WHERE DG.id = DGTeacher.danh_gia_id
+                  GROUP BY DGTeacher.user_id`
+
+    var res2 = await strapi.db.connection.raw(query2);
+
+    let result = {id: res.rows[0].id, fullname: res.rows[0].fullname, email: res.rows[0].email,
+                  avatar: res.rows[0].avatar, profile: res.rows[0].profile, subjects: res.rows[0].subjects,
+                  time: res.rows[0].time, cost: res.rows[0].cost, star: 0, total_rating: 0 };;
+
+    for(let i = 0; i < res2.rows.length; i++){
+      if(res.rows[0].id === res2.rows[i].id){
+        result.star =  res2.rows[i].star;
+        result.total_rating = res2.rows[i].total_rating;
+        break;
+      }
+    }
+    
+    return result;
   },
   async findAllTutor(ctx) {
     let query = `SELECT
