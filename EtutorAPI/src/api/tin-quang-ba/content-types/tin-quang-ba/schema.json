@@ -21,17 +21,6 @@
     "Cost": {
       "type": "biginteger"
     },
-    "Star": {
-      "type": "float",
-      "default": 0,
-      "max": 5,
-      "min": 0
-    },
-    "total_rating": {
-      "type": "integer",
-      "min": 0,
-      "default": 0
-    },
     "IDTeacher": {
       "type": "relation",
       "relation": "oneToOne",
