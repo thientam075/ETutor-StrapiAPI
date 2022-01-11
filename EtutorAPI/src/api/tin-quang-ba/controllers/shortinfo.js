@@ -42,8 +42,10 @@ module.exports = {
     return res;
   },
   async fullInfoTeacher(ctx) {
+   
     const queryObj = ctx.request.params.id;
     if (queryObj === null || queryObj === undefined) {
+      
       return ctx.badRequest("id is not exist");
     }
     let query = `SELECT
@@ -54,6 +56,7 @@ module.exports = {
             T.id = UT."tin_quang_ba_id" AND UT."user_id" = U.id AND U.id = ${queryObj}
         ORDER BY U.fullname ASC`;
     var res = await strapi.db.connection.raw(query);
+    
     return res;
   },
   async findAllTutor(ctx) {
@@ -73,6 +76,24 @@ WHERE
 SET 
     document_vectors = (to_tsvector(fullname)) `;
     var res = await strapi.db.connection.raw(query);
+    return res;
+  },
+  async getAdByTeacherId(ctx) {
+    console.log(1111111)
+    const queryObj = ctx.request.params.id;
+    if (queryObj === null || queryObj === undefined) {
+      console.log(222222222)
+      return ctx.badRequest("id is not exist");
+    }
+    console.log('queryObj',queryObj)
+    let query = `SELECT
+            UT.tin_quang_ba_id
+        FROM
+             "tin_quang_bas_id_teacher_links" as UT
+        WHERE
+             UT.user_id = ${queryObj}`;
+    var res = await strapi.db.connection.raw(query);
+    console.log('res', res)
     return res;
   },
 };

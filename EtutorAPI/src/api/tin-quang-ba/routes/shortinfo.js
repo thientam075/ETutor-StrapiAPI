@@ -2,6 +2,11 @@ module.exports = {
     routes: [
       { // Path defined with a URL parameter
         method: 'GET',
+        path: '/tin-quang-bas/getAdByTeacherId/:id',
+        handler: 'shortinfo.getAdByTeacherId',
+      },
+      { // Path defined with a URL parameter
+        method: 'GET',
         path: '/tin-quang-bas/searchTutor',
         handler: 'shortinfo.searchTeacher',
       },
